@@ -1,14 +1,14 @@
 import 'package:go_router/go_router.dart';
-import 'package:avicola/presentacion/screens/screems.dart';
+import 'package:avicola/features/auth/presentacion/screens/screems.dart';
 
 // GoRouter configuration
 final appRouter = GoRouter(
-  initialLocation: '/home',
+  initialLocation: '/login',
   routes: [
     GoRoute(
         path: '/login',
         name: LoginScreen.name,
-        builder: ((context, state) => const HomeScreen())),
+        builder: ((context, state) => const LoginScreen())),
     GoRoute(
         path: '/home',
         name: HomeScreen.name,
