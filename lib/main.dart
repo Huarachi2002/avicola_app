@@ -1,4 +1,4 @@
-import 'package:avicola/config/routes/app_routes.dart';
+import 'config/config.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,8 +11,8 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'Avicola',
       routerConfig: appRouter,
+      theme: AppTheme().getTheme(),
       debugShowCheckedModeBanner: false,
     );
   }

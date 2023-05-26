@@ -32,4 +32,10 @@ const appMenuItems = <MenuItem>[
     link: '/produccion',
     icon: Icons.poll_rounded,
   ),
+  MenuItem(
+    title: 'Vacunas',
+    subTitle: 'Sección de las vacunas',
+    link: '/vacunas',
+    icon: Icons.vaccines,
+  ),
 ];

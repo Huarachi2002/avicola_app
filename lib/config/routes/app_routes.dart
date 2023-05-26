@@ -3,7 +3,7 @@ import 'package:avicola/presentacion/screens/screems.dart';
 
 // GoRouter configuration
 final appRouter = GoRouter(
-  initialLocation: '/login',
+  initialLocation: '/home',
   routes: [
     GoRoute(
         path: '/login',
@@ -25,5 +25,9 @@ final appRouter = GoRouter(
         path: '/alertas',
         name: AlertasScreen.name,
         builder: ((context, state) => const AlertasScreen())),
+    GoRoute(
+        path: '/vacunas',
+        name: VacunasScreen.name,
+        builder: ((context, state) => const VacunasScreen())),
   ],
 );

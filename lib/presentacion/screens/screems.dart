@@ -1,5 +1,6 @@
-export 'package:avicola/presentacion/screens/Home/home_screems.dart';
-export 'package:avicola/presentacion/screens/Login/login_screems.dart';
-export 'package:avicola/presentacion/screens/Alertas/alertas_screens.dart';
-export 'package:avicola/presentacion/screens/Galpon/galpon_screens.dart';
-export 'package:avicola/presentacion/screens/Produccion/produccion_screens.dart';
+export 'Home/home_screems.dart';
+export 'Login/login_screems.dart';
+export 'Alertas/alertas_screens.dart';
+export 'Galpon/galpon_screens.dart';
+export 'Produccion/produccion_screens.dart';
+export 'Vacunas/vacunas_screen.dart';
