@@ -1,3 +1,6 @@
+import 'package:avicola/features/auth/presentacion/providers/login_form_provider.dart';
+import 'package:provider/provider.dart';
+
 import 'config/config.dart';
 import 'package:flutter/material.dart';
 
@@ -10,10 +13,17 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: appRouter,
-      theme: AppTheme().getTheme(),
-      debugShowCheckedModeBanner: false,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => LoginFormProvider(),
+        )
+      ],
+      child: MaterialApp.router(
+        routerConfig: appRouter,
+        theme: AppTheme().getTheme(),
+        debugShowCheckedModeBanner: false,
+      ),
     );
   }
 }
