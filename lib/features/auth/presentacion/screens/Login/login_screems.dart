@@ -1,10 +1,8 @@
 import 'dart:async';
-
 import 'package:avicola/features/auth/presentacion/providers/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:avicola/features/shared/shared.dart';
 import 'package:go_router/go_router.dart';
-import 'package:riverpod/riverpod.dart';
 import 'package:provider/provider.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -68,7 +66,6 @@ class _LoginForm extends StatelessWidget {
             const SizedBox(height: 50),
             Text('Login', style: textStyles.titleLarge),
             const SizedBox(height: 90),
-
             CustomTextFormField(
               label: 'Usuario',
               keyboardType: TextInputType.text,
@@ -83,7 +80,6 @@ class _LoginForm extends StatelessWidget {
               },
             ),
             const SizedBox(height: 30),
-
             CustomTextFormField(
               label: 'Contraseña',
               obscureText: true,
@@ -95,9 +91,7 @@ class _LoginForm extends StatelessWidget {
                 return null;
               },
             ),
-
             const SizedBox(height: 30),
-
             SizedBox(
                 width: double.infinity,
                 height: 60,
@@ -106,48 +100,44 @@ class _LoginForm extends StatelessWidget {
                   buttonColor: Colors.black,
                   onPressed: () {
                     if (login_provider.isValidForm()) {
-                      context.go('/home');
+                      showDialog(
+                          context: context,
+                          barrierDismissible: false,
+                          builder: (context) {
+                            Timer(const Duration(seconds: 1), () {
+                              // Navigator.of(context).pop();
+                              context.go('/home');
+                            });
+                            return AlertDialog(
+                              title: const Text('Usuario Validado'),
+                              icon: const Icon(
+                                Icons.check_circle_outline_sharp,
+                                color: Colors.green,
+                                size: 70,
+                              ),
+                            );
+                          });
                     } else {
                       showDialog(
                           context: context,
                           barrierDismissible: false,
                           builder: (context) {
-                            Timer(Duration(seconds: 3), () {
+                            Timer(const Duration(seconds: 1), () {
                               Navigator.of(context).pop();
                             });
                             return AlertDialog(
-                              title: const Text('Usuario Invalidado'),
-                              icon: const Icon(Icons.cancel_outlined),
-                              // content: const Text(
-                              //     'Ex sit ea est in. Aliqua cillum amet tempor id officia tempor adipisicing amet commodo aliqua. Ut eiusmod cillum nulla sit ut non minim laboris cupidatat exercitation minim magna pariatur est. Nisi aute ea id enim sint occaecat aute adipisicing duis qui nisi. Nulla cillum nulla eiusmod enim magna sint eu dolor occaecat cupidatat.'),
-                              // actions: [
-                              // TextButton(
-                              //     onPressed: () => context.pop(),
-                              //     child: const Text('Cancelar')),
-                              // FilledButton(
-                              //     onPressed: () => context.pop(),
-                              //     child: const Text('Aceptar')),
-                              // ],
+                              title: const Text('El usuario no existe'),
+                              icon: const Icon(
+                                Icons.cancel_outlined,
+                                color: Colors.red,
+                                size: 70,
+                              ),
                             );
                           });
                     }
                   },
                 )),
-
             const Spacer(flex: 2),
-
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.center,
-            //   children: [
-            //     const Text('¿No tienes cuenta?'),
-            //     TextButton(
-            //       onPressed: ()=> context.push('/register'),
-            //       child: const Text('Crea una aquí')
-            //     )
-            //   ],
-            // ),
-
-            // const Spacer( flex: 1),
           ],
         ),
       ),

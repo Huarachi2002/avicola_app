@@ -15,13 +15,13 @@ class LoginFormProvider extends ChangeNotifier {
   }
 
   bool isValidForm() {
-    if (users['user'] != user || users['password'] != password) {
-      return false;
-    }
     print(formKey.currentState?.validate());
-
     print('$user - $password');
 
-    return formKey.currentState?.validate() ?? false;
+    if (users['user'] != user || users['password'] != password) {
+      return false;
+    } else {
+      return formKey.currentState?.validate() ?? false;
+    }
   }
 }
