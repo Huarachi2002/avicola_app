@@ -10,21 +10,62 @@ class GalponScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Galpones'),
       ),
-      body: const _GalponView(),
+      body: _GalponView(),
     );
   }
 }
 
 class _GalponView extends StatelessWidget {
-  const _GalponView({super.key});
-
+  _GalponView({super.key});
+  final iconGalpon = Icon(
+    Icons.home_filled,
+    size: 50,
+  );
+  final colores = <Color>[
+    Colors.blue.shade100,
+    Colors.amber.shade100,
+    Colors.red.shade100,
+    Colors.green.shade100,
+    Colors.purple.shade100,
+    Colors.pink.shade100
+  ];
   @override
   Widget build(BuildContext context) {
     return GridView.count(
       crossAxisCount: 2,
       crossAxisSpacing: 20,
       mainAxisSpacing: 20,
-      children: [],
+      children: [
+        ElevatedButton(
+          onPressed: () {},
+          // style: ButtonStyle(),
+          child: Container(
+            child: Column(children: [
+              iconGalpon,
+            ]),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: colores[0],
+            ),
+          ),
+        ),
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: colores[1],
+          ),
+          child: Column(
+            children: [iconGalpon],
+          ),
+        ),
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: colores[2],
+          ),
+          child: Column(children: [iconGalpon]),
+        ),
+      ],
     );
   }
 }

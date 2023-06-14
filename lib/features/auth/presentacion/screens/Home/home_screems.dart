@@ -14,15 +14,6 @@ class HomeScreen extends StatelessWidget {
       key: scaffoldKey,
       appBar: AppBar(
         title: const Text('Home'),
-        // leading: Builder(builder: (BuildContext context) {
-        //   return IconButton(
-        //     icon: const Icon(Icons.menu),
-        //     onPressed: () {
-        //       Scaffold.of(context).openDrawer();
-        //     },
-        //     tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-        //   );
-        // }),
       ),
       body: const _HomeView(),
       drawer: Drawer(
@@ -36,22 +27,6 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
         ),
-        //       padding: ,
-        //         decoration: BoxDecoration(
-        //           color: colorSeed,
-        //         ),
-        //         child: Text('Más Opciones')),
-        //     ListTile(
-        //       title: Text('Item 1'),
-        //       onTap: () {},
-        //     ),
-        //     ListTile(
-        //       title: Text('Item 1'),
-        //       onTap: () {},
-        //     ),
-        //     ListTile(
-        //       title: Text('Item 1'),
-        //       onTap: () {},
       ),
     );
   }
@@ -62,38 +37,45 @@ class HomeScreen extends StatelessWidget {
       child: Column(
         //Lista del menu
         children: [
-          menuItem(),
+          menuItem(appMenuConfig[0].title, appMenuConfig[0].icon,
+              appMenuConfig[0].link),
+          menuItem(appMenuConfig[1].title, appMenuConfig[1].icon,
+              appMenuConfig[1].link)
         ],
       ),
     );
   }
 
-  Widget menuItem() {
-    return Material(
-      child: InkWell(
-          onTap: () {},
-          child: Padding(
-            padding: EdgeInsets.all(15.0),
-            child: Row(children: [
-              Expanded(
-                child: Icon(
-                  Icons.access_alarm,
-                  size: 20,
-                  color: Colors.black,
+  Widget menuItem(String title, IconData icon, String link) {
+    return Builder(builder: (context) {
+      return Material(
+        child: InkWell(
+            onTap: () {
+              context.push(link);
+            },
+            child: Padding(
+              padding: EdgeInsets.all(15.0),
+              child: Row(children: [
+                Expanded(
+                  child: Icon(
+                    icon,
+                    size: 20,
+                    color: colorSeed,
+                  ),
                 ),
-              ),
-              Expanded(
-                  flex: 3,
-                  child: Text(
-                    'Dashboard',
-                    style: TextStyle(
-                      color: colorSeed,
-                      fontSize: 16,
-                    ),
-                  ))
-            ]),
-          )),
-    );
+                Expanded(
+                    flex: 3,
+                    child: Text(
+                      title,
+                      style: TextStyle(
+                        color: colorSeed,
+                        fontSize: 16,
+                      ),
+                    ))
+              ]),
+            )),
+      );
+    });
   }
 }
 
@@ -130,14 +112,6 @@ class _CustomListTile extends StatelessWidget {
       title: Text(menuItem.title),
       subtitle: Text(menuItem.subTitle),
       onTap: () {
-        // Navigator.of(context).push(
-        //   MaterialPageRoute(
-        //     builder: (context) => const ButtonsScreen(),
-        //   ),
-        // );
-        // Navigator.pushNamed(context, menuItem.link );
-
-        // context.pushNamed( CardsScreen.name );
         context.push(menuItem.link);
       },
     );
@@ -148,10 +122,10 @@ class _MyHeaderDrawer extends StatefulWidget {
   const _MyHeaderDrawer({super.key});
 
   @override
-  State<_MyHeaderDrawer> createState() => __MyHeaderDrawerState();
+  State<_MyHeaderDrawer> createState() => _MyHeaderDrawerState();
 }
 
-class __MyHeaderDrawerState extends State<_MyHeaderDrawer> {
+class _MyHeaderDrawerState extends State<_MyHeaderDrawer> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -171,8 +145,12 @@ class __MyHeaderDrawerState extends State<_MyHeaderDrawer> {
                   image: AssetImage('assets/images/profile.png')),
             ),
           ),
-          // Text('My Name'),
-          // Text('registro')
+          FilledButton(
+              onPressed: () {},
+              child: const Text(
+                'Yeferson Adrian Huarachi Aleman',
+              )),
+          FilledButton(onPressed: () {}, child: const Text('220001499')),
         ],
       ),
     );

@@ -4,3 +4,5 @@ export 'Alertas/alertas_screens.dart';
 export 'Galpon/galpon_screens.dart';
 export 'Produccion/produccion_screens.dart';
 export 'Vacunas/vacunas_screen.dart';
+export 'Gestionar/gestionUsuario_screen.dart';
+export 'Gestionar/gestionVanunas_screen.dart';

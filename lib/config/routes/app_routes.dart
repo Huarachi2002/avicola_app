@@ -29,5 +29,13 @@ final appRouter = GoRouter(
         path: '/vacunas',
         name: VacunasScreen.name,
         builder: ((context, state) => const VacunasScreen())),
+    GoRoute(
+        path: '/gestion-usuario',
+        name: GestionUsuarioScreen.name,
+        builder: ((context, state) => const GestionUsuarioScreen())),
+    GoRoute(
+        path: '/gestion-vacuna',
+        name: GestionVacunasScreen.name,
+        builder: ((context, state) => const GestionVacunasScreen())),
   ],
 );
