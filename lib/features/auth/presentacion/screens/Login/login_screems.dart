@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:avicola/features/auth/presentacion/providers/providers.dart';
+import 'package:avicola/features/auth/presentacion/screens/Home/home_screems.dart';
 import 'package:flutter/material.dart';
 import 'package:avicola/features/shared/shared.dart';
 import 'package:go_router/go_router.dart';
@@ -105,8 +106,12 @@ class _LoginForm extends StatelessWidget {
                           barrierDismissible: false,
                           builder: (context) {
                             Timer(const Duration(seconds: 1), () {
-                              // Navigator.of(context).pop();
-                              context.go('/home');
+                              Navigator.of(context).pop();
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const HomeScreen()),
+                              );
                             });
                             return AlertDialog(
                               title: const Text('Usuario Validado'),

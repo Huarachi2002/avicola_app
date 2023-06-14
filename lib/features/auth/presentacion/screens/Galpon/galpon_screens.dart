@@ -20,6 +20,11 @@ class _GalponView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return GridView.count(
+      crossAxisCount: 2,
+      crossAxisSpacing: 20,
+      mainAxisSpacing: 20,
+      children: [],
+    );
   }
 }
