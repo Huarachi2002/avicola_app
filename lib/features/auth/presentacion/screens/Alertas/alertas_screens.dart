@@ -92,16 +92,16 @@ class _CardTypeVacunaState extends State<_CardTypeVacuna> {
                 ),
                 Align(
                   alignment: Alignment.topLeft,
-                  child: Column(
-                    children:[
-                      Text(widget.label, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-                      if(icon == Icons.expand_less)
-                      ...[
-                        const SizedBox(height: 20),
-                        const Text('Fecha de vacunación: 30/06/2023\nVacuna: AntiMoquillo\nGalpón: 2'),
-                      ],
-                      
-                    ]),
+                  child: Column(children: [
+                    Text(widget.label,
+                        style: const TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold)),
+                    if (icon == Icons.expand_less) ...[
+                      const SizedBox(height: 20),
+                      const Text(
+                          'Fecha de vacunación: 30/06/2023\nVacuna: AntiMoquillo\nGalpón: 2'),
+                    ],
+                  ]),
                 )
               ],
             ),

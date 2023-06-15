@@ -15,8 +15,8 @@ final appRouter = GoRouter(
         builder: ((context, state) => const HomeScreen())),
     GoRoute(
         path: '/galpon',
-        name: GalponScreen.name,
-        builder: ((context, state) => const GalponScreen())),
+        name: GalponesScreen.name,
+        builder: ((context, state) => const GalponesScreen())),
     GoRoute(
         path: '/produccion',
         name: ProduccionScreen.name,
@@ -37,5 +37,11 @@ final appRouter = GoRouter(
         path: '/gestion-vacuna',
         name: GestionVacunasScreen.name,
         builder: ((context, state) => const GestionVacunasScreen())),
+    GoRoute(
+        path: '/galpon/:num',
+        name: GalponScreen.name,
+        builder: ((context, state) => GalponScreen(
+              num: state.pathParameters['num'] ?? '',
+            ))),
   ],
 );
