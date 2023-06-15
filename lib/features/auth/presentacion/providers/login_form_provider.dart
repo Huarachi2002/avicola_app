@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class LoginFormProvider extends ChangeNotifier {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   static Map<String, String> users = {
+    'Dario': 'hiachi20',
     'jajaja': 'jajaja',
     'hhwy123': 'hhwy123',
     'gabrield': 'gabrield',
@@ -27,12 +28,13 @@ class LoginFormProvider extends ChangeNotifier {
     for (var usuario in users.keys) {
       var contrasena = users[user];
       // Realiza alguna acción con el usuario y la contraseña
-      if (usuario != user || contrasena != password) {
+      print('$usuario - $contrasena');
+      if (usuario != user && contrasena != password) {
         return false;
       } else {
         return formKey.currentState?.validate() ?? false;
       }
     }
-    return false;
+    return true;
   }
 }
