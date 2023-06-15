@@ -20,6 +20,10 @@ class _VacunasView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      child: Image(
+          image: NetworkImage(
+              'https://avinews.com/wp-content/uploads/2016/09/plan_de_vacunacion_reproductoras.jpg')),
+    );
   }
 }
