@@ -28,13 +28,11 @@ class LoginFormProvider extends ChangeNotifier {
     for (var usuario in users.keys) {
       var contrasena = users[user];
       // Realiza alguna acción con el usuario y la contraseña
-      print('$usuario - $contrasena');
-      if (usuario != user && contrasena != password) {
-        return false;
-      } else {
+      print('>$usuario - $contrasena');
+      if (usuario == user && contrasena == password) {
         return formKey.currentState?.validate() ?? false;
       }
     }
-    return true;
+    return false;
   }
 }

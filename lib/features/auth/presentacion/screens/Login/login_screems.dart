@@ -3,7 +3,7 @@ import 'package:avicola/features/auth/presentacion/providers/providers.dart';
 import 'package:avicola/features/auth/presentacion/screens/Home/home_screems.dart';
 import 'package:flutter/material.dart';
 import 'package:avicola/features/shared/shared.dart';
-import 'package:go_router/go_router.dart';
+// import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 class LoginScreen extends StatelessWidget {
