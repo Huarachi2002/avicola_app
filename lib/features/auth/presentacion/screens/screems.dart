@@ -7,3 +7,4 @@ export 'Vacunas/vacunas_screen.dart';
 export 'Gestionar/gestionUsuario_screen.dart';
 export 'Gestionar/gestionVanunas_screen.dart';
 export 'Galpon/galpon_screen.dart';
+export 'Galpon/Lote/lote_screen.dart';

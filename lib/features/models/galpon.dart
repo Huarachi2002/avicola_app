@@ -1,29 +1,26 @@
 import 'package:objectbox/objectbox.dart';
-import 'task.dart';
+import 'lote.dart';
 
 @Entity()
 class Galpon {
+  @Id()
   int id = 0;
   String name;
   int color;
+  // ignore: non_constant_identifier_names
   int CapacidadMax;
+  // ignore: non_constant_identifier_names
   int CapacidadLibre;
+  // ignore: non_constant_identifier_names
   bool Cuarentena = false;
 
   @Backlink()
-  final tasks = ToMany<Task>();
+  final lotes = ToMany<Lote>();
 
   Galpon({
     required this.name,
     required this.color,
+    // ignore: non_constant_identifier_names
     required this.CapacidadMax,
   }) : CapacidadLibre = CapacidadMax;
-
-  String taskDescription() {
-    final tasksCompleted = tasks.where((task) => task.completed).length;
-    if (tasks.isEmpty) {
-      return '';
-    }
-    return '$tasksCompleted of ${tasks.length}';
-  }
 }

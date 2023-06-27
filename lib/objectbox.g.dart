@@ -15,79 +15,84 @@ import 'package:objectbox/objectbox.dart';
 import 'package:objectbox_flutter_libs/objectbox_flutter_libs.dart';
 
 import 'features/models/galpon.dart';
-import 'features/models/task.dart';
+import 'features/models/lote.dart';
 
 export 'package:objectbox/objectbox.dart'; // so that callers only have to import this file
 
 final _entities = <ModelEntity>[
   ModelEntity(
-      id: const IdUid(1, 3977530355356594612),
+      id: const IdUid(1, 2548785174816103977),
       name: 'Galpon',
-      lastPropertyId: const IdUid(6, 4467473904833530489),
+      lastPropertyId: const IdUid(6, 3837757930415103779),
       flags: 0,
       properties: <ModelProperty>[
         ModelProperty(
-            id: const IdUid(1, 7599714052158984440),
+            id: const IdUid(1, 8917161017853581174),
             name: 'id',
             type: 6,
             flags: 1),
         ModelProperty(
-            id: const IdUid(2, 7981914388949632373),
+            id: const IdUid(2, 5349763515142845678),
             name: 'name',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(3, 3792971474633273375),
+            id: const IdUid(3, 3507529671108560273),
             name: 'color',
             type: 6,
             flags: 0),
         ModelProperty(
-            id: const IdUid(4, 6223838825767705512),
+            id: const IdUid(4, 2611600357939126480),
             name: 'CapacidadMax',
             type: 6,
             flags: 0),
         ModelProperty(
-            id: const IdUid(5, 7914666752848216566),
+            id: const IdUid(5, 2935733824166506217),
             name: 'CapacidadLibre',
             type: 6,
             flags: 0),
         ModelProperty(
-            id: const IdUid(6, 4467473904833530489),
+            id: const IdUid(6, 3837757930415103779),
             name: 'Cuarentena',
             type: 1,
             flags: 0)
       ],
       relations: <ModelRelation>[],
       backlinks: <ModelBacklink>[
-        ModelBacklink(name: 'tasks', srcEntity: 'Task', srcField: '')
+        ModelBacklink(name: 'lotes', srcEntity: 'Lote', srcField: '')
       ]),
   ModelEntity(
-      id: const IdUid(2, 6556844354097645485),
-      name: 'Task',
-      lastPropertyId: const IdUid(4, 7089457599239871631),
+      id: const IdUid(2, 7112796507575958843),
+      name: 'Lote',
+      lastPropertyId: const IdUid(5, 1954184729294834520),
       flags: 0,
       properties: <ModelProperty>[
         ModelProperty(
-            id: const IdUid(1, 7990727314264509150),
+            id: const IdUid(1, 1073587931066391167),
             name: 'id',
             type: 6,
             flags: 1),
         ModelProperty(
-            id: const IdUid(2, 552994356631848958),
-            name: 'description',
+            id: const IdUid(2, 6699052718658273339),
+            name: 'name',
             type: 9,
             flags: 0),
         ModelProperty(
-            id: const IdUid(3, 4975807715001564612),
-            name: 'completed',
-            type: 1,
+            id: const IdUid(3, 3855932548403366937),
+            name: 'color',
+            type: 6,
             flags: 0),
         ModelProperty(
-            id: const IdUid(4, 7089457599239871631),
+            id: const IdUid(4, 7724287714258301882),
+            name: 'Capacidad',
+            type: 6,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(5, 1954184729294834520),
             name: 'galponId',
             type: 11,
             flags: 520,
-            indexId: const IdUid(1, 1720724439705887496),
+            indexId: const IdUid(1, 7824721528320702321),
             relationTarget: 'Galpon')
       ],
       relations: <ModelRelation>[],
@@ -114,8 +119,8 @@ Future<Store> openStore(
 ModelDefinition getObjectBoxModel() {
   final model = ModelInfo(
       entities: _entities,
-      lastEntityId: const IdUid(2, 6556844354097645485),
-      lastIndexId: const IdUid(1, 1720724439705887496),
+      lastEntityId: const IdUid(2, 7112796507575958843),
+      lastIndexId: const IdUid(1, 7824721528320702321),
       lastRelationId: const IdUid(0, 0),
       lastSequenceId: const IdUid(0, 0),
       retiredEntityUids: const [],
@@ -131,9 +136,9 @@ ModelDefinition getObjectBoxModel() {
         model: _entities[0],
         toOneRelations: (Galpon object) => [],
         toManyRelations: (Galpon object) => {
-              RelInfo<Task>.toOneBacklink(
-                      4, object.id, (Task srcObject) => srcObject.galpon):
-                  object.tasks
+              RelInfo<Lote>.toOneBacklink(
+                      5, object.id, (Lote srcObject) => srcObject.galpon):
+                  object.lotes
             },
         getId: (Galpon object) => object.id,
         setId: (Galpon object, int id) {
@@ -167,27 +172,28 @@ ModelDefinition getObjectBoxModel() {
             ..Cuarentena =
                 const fb.BoolReader().vTableGet(buffer, rootOffset, 14, false);
           InternalToManyAccess.setRelInfo<Galpon>(
-              object.tasks,
+              object.lotes,
               store,
-              RelInfo<Task>.toOneBacklink(
-                  4, object.id, (Task srcObject) => srcObject.galpon));
+              RelInfo<Lote>.toOneBacklink(
+                  5, object.id, (Lote srcObject) => srcObject.galpon));
           return object;
         }),
-    Task: EntityDefinition<Task>(
+    Lote: EntityDefinition<Lote>(
         model: _entities[1],
-        toOneRelations: (Task object) => [object.galpon],
-        toManyRelations: (Task object) => {},
-        getId: (Task object) => object.id,
-        setId: (Task object, int id) {
+        toOneRelations: (Lote object) => [object.galpon],
+        toManyRelations: (Lote object) => {},
+        getId: (Lote object) => object.id,
+        setId: (Lote object, int id) {
           object.id = id;
         },
-        objectToFB: (Task object, fb.Builder fbb) {
-          final descriptionOffset = fbb.writeString(object.description);
-          fbb.startTable(5);
+        objectToFB: (Lote object, fb.Builder fbb) {
+          final nameOffset = fbb.writeString(object.name);
+          fbb.startTable(6);
           fbb.addInt64(0, object.id);
-          fbb.addOffset(1, descriptionOffset);
-          fbb.addBool(2, object.completed);
-          fbb.addInt64(3, object.galpon.targetId);
+          fbb.addOffset(1, nameOffset);
+          fbb.addInt64(2, object.color);
+          fbb.addInt64(3, object.Capacidad);
+          fbb.addInt64(4, object.galpon.targetId);
           fbb.finish(fbb.endTable());
           return object.id;
         },
@@ -195,14 +201,15 @@ ModelDefinition getObjectBoxModel() {
           final buffer = fb.BufferContext(fbData);
           final rootOffset = buffer.derefObject(0);
 
-          final object = Task(
-              description: const fb.StringReader(asciiOptimization: true)
-                  .vTableGet(buffer, rootOffset, 6, ''))
-            ..id = const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0)
-            ..completed =
-                const fb.BoolReader().vTableGet(buffer, rootOffset, 8, false);
+          final object = Lote(
+              name: const fb.StringReader(asciiOptimization: true)
+                  .vTableGet(buffer, rootOffset, 6, ''),
+              color: const fb.Int64Reader().vTableGet(buffer, rootOffset, 8, 0),
+              Capacidad:
+                  const fb.Int64Reader().vTableGet(buffer, rootOffset, 10, 0))
+            ..id = const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0);
           object.galpon.targetId =
-              const fb.Int64Reader().vTableGet(buffer, rootOffset, 10, 0);
+              const fb.Int64Reader().vTableGet(buffer, rootOffset, 12, 0);
           object.galpon.attach(store);
           return object;
         })
@@ -235,20 +242,22 @@ class Galpon_ {
       QueryBooleanProperty<Galpon>(_entities[0].properties[5]);
 }
 
-/// [Task] entity fields to define ObjectBox queries.
-class Task_ {
-  /// see [Task.id]
-  static final id = QueryIntegerProperty<Task>(_entities[1].properties[0]);
+/// [Lote] entity fields to define ObjectBox queries.
+class Lote_ {
+  /// see [Lote.id]
+  static final id = QueryIntegerProperty<Lote>(_entities[1].properties[0]);
 
-  /// see [Task.description]
-  static final description =
-      QueryStringProperty<Task>(_entities[1].properties[1]);
+  /// see [Lote.name]
+  static final name = QueryStringProperty<Lote>(_entities[1].properties[1]);
 
-  /// see [Task.completed]
-  static final completed =
-      QueryBooleanProperty<Task>(_entities[1].properties[2]);
+  /// see [Lote.color]
+  static final color = QueryIntegerProperty<Lote>(_entities[1].properties[2]);
 
-  /// see [Task.galpon]
+  /// see [Lote.Capacidad]
+  static final Capacidad =
+      QueryIntegerProperty<Lote>(_entities[1].properties[3]);
+
+  /// see [Lote.galpon]
   static final galpon =
-      QueryRelationToOne<Task, Galpon>(_entities[1].properties[3]);
+      QueryRelationToOne<Lote, Galpon>(_entities[1].properties[4]);
 }

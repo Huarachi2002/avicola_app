@@ -7,7 +7,7 @@ import 'package:avicola/features/auth/presentacion/screens/Galpon/addGalpon_scre
 // import 'package:go_router/go_router.dart';
 
 class GalponesScreen extends StatefulWidget {
-  static const name = 'galpon_screen';
+  static const name = 'galpones_screen';
   const GalponesScreen({super.key});
 
   @override
@@ -19,21 +19,11 @@ class _GalponesScreenState extends State<GalponesScreen> {
   late final Store _store;
   late final Box<Galpon> _galponesBox;
 
-  // void initState() {
-  // super.initState();
-  // if (!_galponesBox.isInitialized) {
-  //   _loadStore().then((_) {
-  //     _galponesBox = _store.box<Galpon>();
-  //     _loadGalpones();
-  //   });
-  //   }
-  // }
-
   Future<void> _addGalpon() async {
     final result = await showDialog(
         context: context, builder: (_) => const AddGalponScreen());
     if (result != null && result is Galpon) {
-      //insert into the database
+      // insert into the database
       _galponesBox.put(result);
       _loadGalpones();
     }
@@ -82,9 +72,7 @@ class _GalponesScreenState extends State<GalponesScreen> {
                 final galpon = _galpones[index];
                 return _GalponesItem(
                     galpon: galpon,
-                    onTap: () => context.push(
-                        '/galpon/${galpon.id}') //_gotoTasks(galpon), galpon: galpon);
-                    );
+                    onTap: () => context.push('/galpon/${galpon.id}'));
               })),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton.extended(
@@ -104,7 +92,7 @@ class _GalponesItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final description = galpon.taskDescription();
+    // final description = galpon.taskDescription();
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: InkWell(
@@ -125,16 +113,16 @@ class _GalponesItem extends StatelessWidget {
                 galpon.name,
                 style: const TextStyle(color: Colors.white, fontSize: 22),
               ),
-              if (description.isNotEmpty) ...[
-                const SizedBox(height: 10),
-                Text(
-                  description,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 17,
-                  ),
-                )
-              ]
+              // if (description.isNotEmpty) ...[
+              //   const SizedBox(height: 10),
+              //   Text(
+              //     description,
+              //     style: const TextStyle(
+              //       color: Colors.white,
+              //       fontSize: 17,
+              //     ),
+              //   )
+              // ]
             ],
           ),
         ),

@@ -1,2 +1,2 @@
 export 'galpon.dart';
-export 'task.dart';
+export 'lote.dart';

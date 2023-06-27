@@ -38,10 +38,16 @@ final appRouter = GoRouter(
         name: GestionVacunasScreen.name,
         builder: ((context, state) => const GestionVacunasScreen())),
     GoRoute(
-        path: '/galpon/:num',
+        path: '/galpon/:id',
         name: GalponScreen.name,
         builder: ((context, state) => GalponScreen(
-              num: state.pathParameters['num'] ?? '',
+              id: state.pathParameters['id'] ?? '',
+            ))),
+    GoRoute(
+        path: '/lote/:id',
+        name: LoteScreen.name,
+        builder: ((context, state) => LoteScreen(
+              id: state.pathParameters['id'] ?? '',
             ))),
   ],
 );
